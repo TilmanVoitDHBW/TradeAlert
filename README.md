@@ -31,7 +31,7 @@ Das System besteht aus einem Orchestrator, mehreren Domänen-Services, einer Dat
 - Node.js & npm (für das Frontend)
 - Docker + Docker Compose
 - **AlphaVantage API Key** (für Live-Kursdaten)
-  - Kostenlos beziehbar über die Alpha-Vantage-Website: [text](https://www.alphavantage.co/support/#api-key)
+  - Kostenlos beziehbar über die Alpha-Vantage-Website: [AlphaVantage/Key](https://www.alphavantage.co/support/#api-key)
   - Im Projektroot befindet sich eine Datei `.env.example`. Diese Datei kopieren `.env.example` zu `.env` und eigenen Key eintragen: `ALPHAVANTAGE_API_KEY=HIER_KEY_EINTRAGEN`. 
 
 ---
