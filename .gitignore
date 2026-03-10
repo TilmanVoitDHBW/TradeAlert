@@ -1,0 +1,15 @@
+# Build-Artefakte
+**/target/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.iml
+
+# Node / Frontend
+node_modules/
+dist/
+
+# AlphaVantageKey
+.env
