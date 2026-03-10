@@ -22,6 +22,9 @@ public class MonitoringJob {
     @RestClient
     AlertClient alert;
 
+    @jakarta.inject.Inject
+    PriceCache priceCache;
+
     @Scheduled(cron = "{monitor.cron}")
     void monitor() {
         System.out.println("[MONITOR] Starting scheduled market evaluation...");
@@ -52,6 +55,7 @@ public class MonitoringJob {
         StockQuote quote;
         try {
             quote = stock.quote(entry.symbol());
+            priceCache.put(entry.symbol(), quote.priceUsd());
             System.out.println("[MONITOR] Fetched quote for " + entry.symbol() + ": $" + quote.priceUsd());
         } catch (Exception ex) {
             System.err.println("[MONITOR] Failed to fetch quote for " + entry.symbol() + ": " + ex.getMessage());

@@ -30,6 +30,9 @@ public class StockSubscriptionResource {
     @RestClient
     AlertClient alertClient;
 
+    @jakarta.inject.Inject
+    PriceCache priceCache;
+
     @GET
     @Path("/exchange-rate")
     public Map<String, Object> getExchangeRate() {
@@ -75,12 +78,7 @@ public class StockSubscriptionResource {
             Double entryPrice = entry.entryPriceUsd() != null ? entry.entryPriceUsd() : 0.0;
             item.put("entryPriceUsd", entryPrice);
 
-            try {
-                StockQuote q = stock.quote(entry.symbol());
-                item.put("currentPriceUsd", q.priceUsd());
-            } catch (Exception e) {
-                item.put("currentPriceUsd", null);
-            }
+            item.put("currentPriceUsd", priceCache.get(entry.symbol()));
             enrichedEntries.add(item);
         }
 
