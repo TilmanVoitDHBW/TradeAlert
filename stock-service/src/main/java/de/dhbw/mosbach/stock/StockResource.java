@@ -56,7 +56,7 @@ public class StockResource {
         }
         
         // Basic length validation
-        if (symbol.length() > 10) {
+        if (symbol.length() > 20) {
             throw new BadRequestException("Das Aktiensymbol ist zu lang.");
         }
         
