@@ -11,7 +11,9 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   subscription-service:
-    build: ./subscription-service
+    build: 
+      context: .
+      dockerfile: subscription-service/Dockerfile
     ports:
       - "8081:8081"
     depends_on:
@@ -22,7 +24,9 @@ services:
       - QUARKUS_DATASOURCE_PASSWORD=alertpassword
 
   alert-service:
-    build: ./alert-service
+    build:
+      context: .
+      dockerfile: alert-service/Dockerfile
     ports:
       - "8082:8082"
     depends_on:
@@ -33,26 +37,32 @@ services:
       - QUARKUS_DATASOURCE_PASSWORD=alertpassword
 
   stock-service:
-    build: ./stock-service
+    build: 
+      context: .
+      dockerfile: stock-service/Dockerfile
     environment:
       - ALPHAVANTAGE_API_KEY=${ALPHAVANTAGE_API_KEY}
     ports:
       - "8083:8083"
 
   currency-service:
-    build: ./currency-service
+    build: 
+      context: .
+      dockerfile: currency-service/Dockerfile
     ports:
       - "8084:8084"
 
   stock-subscription-service:
-    build: ./stock-subscription-service
+    build: 
+      context: .
+      dockerfile: stock-subscription-service/Dockerfile
     depends_on:
       - subscription-service
       - alert-service
       - stock-service
       - currency-service
     ports:
-      - "8080:8080"
+      - "8085:8085"
 
 volumes:
   pgdata:
