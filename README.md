@@ -15,11 +15,11 @@ Folgende Kernprozesse sind abgebildet:
 Das System besteht aus einem Orchestrator, mehreren Domänen-Services, einer Datenbank und einem Frontend.
 
 - **Frontend (Vue.js):** `5173`
-- **stock-subscription-service** (Orchestrator): `8080`
-- **subscription-service** (Abo-Verwaltung): `8081`
-- **alert-service** (Schwellenwert-Prüfung): `8082`
-- **stock-service** (AlphaVantage-Wrapper): `8083`
-- **currency-service** (USD → Zielwährung): `8084`
+- **stock-subscription-service** (Orchestrator): `8180`
+- **subscription-service** (Abo-Verwaltung): `8181`
+- **alert-service** (Schwellenwert-Prüfung): `8182`
+- **stock-service** (AlphaVantage-Wrapper): `8183`
+- **currency-service** (USD → Zielwährung): `8184`
 - **PostgreSQL Datenbank** (Docker-Container): `5432`
 
 ---
